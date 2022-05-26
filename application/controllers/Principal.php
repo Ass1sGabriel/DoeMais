@@ -10,7 +10,7 @@ class Principal extends CI_Controller
 
     public function index()
 	{
-		$dados["title"] = "DoeMais";
+		$dados["title"] = "DoeMais - Início";
 
 		$this->load->view('pages/landing_page', $dados);
 	}
