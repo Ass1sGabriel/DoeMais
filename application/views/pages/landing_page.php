@@ -34,6 +34,7 @@
                     <li class="nav-item"><a class="nav-link" href="#servicos">Nossos serviços</a></li>
                     <li class="nav-item"><a class="nav-link" href="#app">Mobile</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#parceiros">Parceiros</a></li>
                     <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
                 </ul>
             </div>
@@ -127,14 +128,32 @@
 
         </div>
     </section>
+    <!-- Entidades Parceiras -->
+    <section class="page-section" id="parceiros">
+        <div class="container px-4 px-lg-5">
+            <h2 class="text-center mt-0">Entidades Parceiras</h2>
+            <hr class="divider" />
+            <div class="row gx-4 gx-lg-5">
+                <?php foreach ($entidades as $entidade) : ?>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="mt-5">
+                            <div class="mb-2"><i class="bi bi-people fs-1 text-primary"></i></div>
+                            <h3 class="h4 mb-2"><?= $entidade["nome"] ?></h3>
+                            <p class="text-muted mb-0"><?= $entidade["descricao"] ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
     <!-- Contato -->
-    <section class="page-section" id="contato">
+    <section class="page-section bg-primary" id="contato">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6 text-center">
                     <h2 class="mt-0">Fique por dentro!</h2>
                     <hr class="divider" />
-                    <p class="text-muted mb-5">Ficou interessado em trabalhar com a nossa plataforma? Preencha seus dados a baixo
+                    <p class="text-light mb-5">Ficou interessado em trabalhar com a nossa plataforma? Preencha seus dados a baixo
                         que entraremos em contato e conversaremos sobre nossos planos disponíveis e indicaremos o melhor para você e sua instituição.
                     </p>
                 </div>
@@ -178,14 +197,14 @@
                             <div class="text-center text-danger mb-3">Erro ao enviar formulário!</div>
                         </div>
                         <!-- Submit Button-->
-                        <div class="d-grid"><button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Enviar</button></div>
+                        <div class="d-grid"><button class="btn btn-light btn-xl disabled" id="submitButton" type="submit">Enviar</button></div>
                     </form>
                 </div>
             </div>
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-lg-4 text-center mb-5 mb-lg-0">
-                    <i class="bi-phone fs-2 mb-3 text-muted"></i>
-                    <div>(32) 3721-0190</div>
+                    <i class="bi-phone fs-1 mb-3"></i>
+                    <div class="text-light">(32) 3721-0190</div>
                 </div>
             </div>
         </div>

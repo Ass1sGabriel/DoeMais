@@ -8,6 +8,7 @@ class Usuarios extends CI_Controller
 	{
 		parent::__construct();
 		permission();
+		permissionAdm();
 		$this->load->model("usuarios_model");
 	}
 
@@ -25,7 +26,7 @@ class Usuarios extends CI_Controller
 
 	public function edit($id)
 	{
-		$dados["user"]  = $this->usuarios_model->show($id);
+		$dados["usuario"]  = $this->usuarios_model->show($id);
 		$dados["title"] = "Editar - DoeMais";
 
 		$this->load->view('templates/header', $dados);
@@ -37,9 +38,22 @@ class Usuarios extends CI_Controller
 
 	public function update($id)
 	{
-		$this->load->model("usuarios_model");
-		$game = $_POST;
-		$this->usuarios_model->update($id, $game);
-		redirect("dashboard");
+		$usuario = $_POST;
+		$this->usuarios_model->update($id, $usuario);
+		redirect("usuarios");
+	}
+
+	public function show($id)
+	{
+		return $this->db->get_where("usuarios", array(
+			"id" => $id
+		))->row_array();
+	}
+
+	public function destroy($id)
+	{
+		$this->db->where("id", $id);
+		$this->db->delete("usuarios");
+		redirect("usuarios");
 	}
 }

@@ -6,10 +6,12 @@ class Principal extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
+		$this->load->model("entidades_model");
 	}
 
     public function index()
 	{
+		$dados["entidades"]  = $this->entidades_model->principal_index();
 		$dados["title"] = "DoeMais - Início";
 
 		$this->load->view('pages/landing_page', $dados);

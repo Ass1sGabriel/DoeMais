@@ -36,6 +36,7 @@
     <div class="checkbox mb-3">
       <?= $this->session->flashdata('usuario_inativo'); ?>
       <?= $this->session->flashdata('usuario_incorreto'); ?>
+      <?= $this->session->flashdata('erro_login'); ?>
       <label>
         <input type="checkbox" value="remember-me"> Lembrar meu acesso
       </label>
