@@ -44,7 +44,8 @@ class Entidades extends CI_Controller
 			"email" => $_POST["email"],
 			"cidade" => $_POST["cidade"],
 			"descricao" => $_POST["descricao"],
-			"cnpj" => $_POST["cnpj"]
+			"cnpj" => $_POST["cnpj"],
+			"status" => $_POST["status"]
 		);
 
 		$this->entidades_model->store($entidade);

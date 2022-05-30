@@ -29,7 +29,7 @@
                 Dashboard
           </a>
           <!-- Início dos itens acessíveis apenas por administradores -->
-            <?php if ($_SESSION["logged_user"]["funcao"] === "administrador") : ?>
+            <?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
               <a class="nav-link" href="<?= base_url() ?>usuarios">
                 <span data-feather="shopping-cart"></span>
                 Usuários

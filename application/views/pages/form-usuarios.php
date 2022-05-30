@@ -13,32 +13,32 @@
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="name">Nome</label>
+						<label for="name">Nome <small class="text-danger">* Obrigatório</small></label>
 						<input type="text" class="form-control" name="nome" id="nome" placeholder="nome" value="<?= isset($usuario["nome"]) ? $usuario["nome"] : "" ?>" required>
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="email">E-mail</label>
+						<label for="email">E-mail <small class="text-danger">* Obrigatório</small></label>
 						<input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="<?= isset($usuario["email"]) ? $usuario["email"] : "" ?>" required>
 					</div>
 				</div>
 
 				<div class="col-md-6">
 					<div class="form-group">
-						<label for="cidade">Cidade</label>
+						<label for="cidade">Cidade <small class="text-danger">* Obrigatório</small></label>
 						<input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" value="<?= isset($usuario["cidade"]) ? $usuario["cidade"] : "" ?>" required>
 					</div>
 				</div>
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="status">Função <small class="text-danger">* Obrigatório</small></label>
-                        <select name="status" id="status" class="form-control">
+                        <label for="funcao">Função <small class="text-danger">* Obrigatório</small></label>
+                        <select name="funcao" id="funcao" class="form-control">
                             <option selected disabled><?= $usuario["funcao"] ?></option>
-                            <option value="administrador">Administrador</option>
-                            <option value="usuario">Usuário</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Usuario">Usuário</option>
                         </select>
                     </div>
                 </div>
