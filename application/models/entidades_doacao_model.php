@@ -1,9 +1,11 @@
 <?php
 
-	class Entidades_model extends CI_model
+	class Entidades_doacao_model extends CI_model
 	{
 		public function index()
 		{
+			$this->db->where("status", "ativo");
+			$this->db->order_by("cidade", "ASC");
 			return $this->db->get("entidades")->result_array();
 		}
 

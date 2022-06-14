@@ -8,12 +8,12 @@ class EntidadesDoacao extends CI_Controller
 	{
 		parent::__construct();
 		permission();
-		$this->load->model("entidades_model");
+		$this->load->model("entidades_doacao_model");
 	}
 
 	public function index()
 	{
-		$dados["entidades"]  = $this->entidades_model->index();
+		$dados["entidades"]  = $this->entidades_doacao_model->index();
 		$dados["title"] = "Fazer Doação - DoeMais";
 
 		$this->load->view('templates/header', $dados);
@@ -37,7 +37,7 @@ class EntidadesDoacao extends CI_Controller
 	public function store()
 	{
 
-		$this->load->model("entidades_model");
+		$this->load->model("entidades_doacao_model");
 		$entidade = array(
 			"nome" => $_POST["nome"],
 			"email" => $_POST["email"],
@@ -47,13 +47,13 @@ class EntidadesDoacao extends CI_Controller
 			"status" => $_POST["status"]
 		);
 
-		$this->entidades_model->store($entidade);
+		$this->entidades_doacao_model->store($entidade);
 		redirect("entidades");
 	}
 
 	public function doar($id)
 	{
-		$dados["entidade"]  = $this->entidades_model->show($id);
+		$dados["entidade"]  = $this->entidades_doacao_model->show($id);
 		$dados["title"] = "Finalizar - DoeMais";
 
 		$this->load->view('templates/header', $dados);
@@ -66,7 +66,7 @@ class EntidadesDoacao extends CI_Controller
 	public function update($id)
 	{
 		$entidade = $_POST;
-		$this->entidades_model->update($id, $entidade);
+		$this->entidades_doacao_model->update($id, $entidade);
 		redirect("entidades");
 	}
 
