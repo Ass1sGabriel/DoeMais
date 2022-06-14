@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="<?php echo base_url('public/assets/favicon.ico'); ?>" />
+  <!-- Bootstrap Icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!-- SimpleLightbox plugin CSS-->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="<?php echo base_url('public/css/style.css'); ?>" rel="stylesheet" />
+</head>
+
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?= base_url() ?>">DoeMais</a>
   <div>
@@ -28,6 +47,10 @@
                 <span data-feather="shopping-cart"></span>
                 Dashboard
           </a>
+          <a class="nav-link" href="<?= base_url() ?>entidadesdoacao">
+              <span data-feather="shopping-cart"></span>
+              Fazer Doação
+            </a>
           <!-- Início dos itens acessíveis apenas por administradores -->
             <?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
               <a class="nav-link" href="<?= base_url() ?>usuarios">
