@@ -23,9 +23,27 @@
 			return $this->db->get("entidades")->result_array();
 		}
 
+		public function gerir_adm_index()
+		{
+			$this->db->order_by("id", "DESC");
+			return $this->db->get("doacoes")->result_array();
+		}
+
+		public function gerir_usuario_index()
+		{
+			$this->db->where("idUsuarioDoador", $_SESSION["logged_user"]["id"]);
+			$this->db->order_by("id", "DESC");
+			return $this->db->get("doacoes")->result_array();
+		}
+
 		public function store($user)
 		{
 			$this->db->insert("entidades", $user);
+		}
+
+		public function grava_doacao($user)
+		{
+			$this->db->insert("doacoes", $user);
 		}
 
 		public function show($id)

@@ -13,7 +13,7 @@ class Login extends CI_Controller
 	public function index()
 	{
 		$dados["title"] = "DoeMais - Login";
-		$this->load->view('pages/login', $dados);
+		$this->load->view('pages/view_login', $dados);
 	}
 
 	public function store()

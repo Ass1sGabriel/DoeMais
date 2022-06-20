@@ -19,7 +19,7 @@ class Entidades extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/entidades', $dados);
+		$this->load->view('pages/view_entidades', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}

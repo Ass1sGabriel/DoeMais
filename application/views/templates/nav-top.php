@@ -43,16 +43,24 @@
         </h6>
         <ul class="nav flex-column">
           <li class="nav-item">
-          <a class="nav-link" href="<?= base_url() ?>dashboard">
-                <span data-feather="shopping-cart"></span>
-                Dashboard
-          </a>
-          <a class="nav-link" href="<?= base_url() ?>entidadesdoacao">
+            <a class="nav-link" href="<?= base_url() ?>dashboard">
+              <span data-feather="shopping-cart"></span>
+              Dashboard
+            </a>
+            <a class="nav-link" href="<?= base_url() ?>entidadesdoacao">
               <span data-feather="shopping-cart"></span>
               Fazer Doação
             </a>
-          <!-- Início dos itens acessíveis apenas por administradores -->
+            <a class="nav-link" href="<?= base_url() ?>gerirdoacao/usuario_index">
+              <span data-feather="shopping-cart"></span>
+              Minhas Doações
+            </a>
+            <!-- Início dos itens acessíveis apenas por administradores -->
             <?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
+              <a class="nav-link disabled">
+                <span data-feather="shopping-cart"></span>
+                Administradores
+              </a>
               <a class="nav-link" href="<?= base_url() ?>usuarios">
                 <span data-feather="shopping-cart"></span>
                 Usuários
@@ -61,10 +69,16 @@
                 <span data-feather="shopping-cart"></span>
                 Entidades
               </a>
-            <!-- Fim dos itens acessíveis apenas por administradores -->
+              <a class="nav-link" href="<?= base_url() ?>gerirdoacao/adm_index">
+                <span data-feather="shopping-cart"></span>
+                Doações
+              </a>
+              <!-- Fim dos itens acessíveis apenas por administradores -->
+              <!-- Início dos itens acessíveis apenas pelos demais usuários -->
             <?php else : ?>
-              <!-- Aqui ficariam os itens acessíveis pelos usuários -->
+
             <?php endif; ?>
+            <!-- Fim dos itens acessíveis apenas pelos demais usuários -->
           </li>
         </ul>
       </div>

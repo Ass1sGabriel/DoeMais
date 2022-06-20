@@ -19,7 +19,7 @@ class Usuarios extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/usuarios', $dados);
+		$this->load->view('pages/view_usuarios', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}
@@ -31,7 +31,7 @@ class Usuarios extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/form-usuarios', $dados);
+		$this->load->view('pages/view_form-usuarios', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}

@@ -7,7 +7,7 @@ class Cadastrar extends CI_Controller
 	public function index()
 	{
 		$dados["title"] = "Sign Up - DoeMais";
-		$this->load->view('pages/cadastrar', $dados);
+		$this->load->view('pages/view_cadastrar', $dados);
 	}
 
 	public function store()

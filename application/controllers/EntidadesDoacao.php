@@ -18,7 +18,7 @@ class EntidadesDoacao extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/entidades_doacao', $dados);
+		$this->load->view('pages/view_entidades_doacao', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}
@@ -58,7 +58,7 @@ class EntidadesDoacao extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/doacao-entidades', $dados);
+		$this->load->view('pages/view_fazer_doacao', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}

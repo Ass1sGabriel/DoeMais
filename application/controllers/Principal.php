@@ -14,7 +14,7 @@ class Principal extends CI_Controller
 		$dados["entidades"]  = $this->entidades_model->principal_index();
 		$dados["title"] = "DoeMais - Início";
 
-		$this->load->view('pages/landing_page', $dados);
+		$this->load->view('pages/view_landing_page', $dados);
 	}
 
 }

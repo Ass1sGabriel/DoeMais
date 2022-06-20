@@ -113,22 +113,25 @@ if (is_numeric(isset($_POST["valor"]) ? $_POST["valor"] : "")) {
                                 <td><?= isset($entidade["nome"]) ? $entidade["nome"] : "" ?> | <?= isset($entidade["cidade"]) ? $entidade["cidade"] : "" ?></td>
                             </h5>
                             <p class="card-text">
-                            <form method="post" action="<?= base_url() ?>entidadesdoacao/doar/<?= $entidade["id"] ?>">
+
+                            <form method="post" id="GeraQR">
                                 <div class="row row-cols-lg-auto">
                                     <label for="valor" class="form-label">Valor a ser doado:</label>
                                     <input type="text" id="valor" name="valor" placeholder="Informe o valor" class="form-group" size="15" maxlength="13" value="<?= isset($valor_pix) ? $valor_pix : "" ?>" onclick="this.select();" onkeypress="mascara(this,reais)">
                                     <!-- <div id="valorHelp" class="form-text">Utilize o ponto "." como separador de decimais.</div> -->
                                 </div>
 
-                                    <input type="hidden" id="descricao" class="form-label" name="descricao" placeholder="Descricao do pagamento" size="60" maxlength="70" value="<?= isset($_POST["descricao"]) ? $_POST["descricao"] : "" ?>" onclick="this.select();">
+                                <input type="hidden" id="entidade" name="entidade" value="<?= isset($entidade["nome"]) ? $entidade["nome"] : "" ?>">
 
-                                    <input type="hidden" id="chave" name="chave" placeholder="Informe a chave pix" value="+5532988396781" size="50" maxlength="100" onclick="this.select();" data-toggle="tooltip" data-placement="right" title="Informe a chave pix de destino" required>
+                                <input type="hidden" id="descricao" class="form-label" name="descricao" placeholder="Descricao do pagamento" size="60" maxlength="70" value="<?= isset($_POST["descricao"]) ? $_POST["descricao"] : "" ?>" onclick="this.select();">
 
-                                    <input type="hidden" id="beneficiario" name="beneficiario" placeholder="Informe o nome do beneficiario" size="30" onclick="this.select();" maxlength="25" value="<?= isset($beneficiario_pix) ? $beneficiario_pix : "" ?>" required>
+                                <input type="hidden" id="chave" name="chave" placeholder="Informe a chave pix" value="+5532988396781" size="50" maxlength="100" onclick="this.select();" data-toggle="tooltip" data-placement="right" title="Informe a chave pix de destino" required>
 
-                                    <input type="hidden" name="cidade" placeholder="Informe a cidade" onclick="this.select();" maxlength="15" value="<?= isset($cidade_pix) ? $cidade_pix : "" ?>" required>
+                                <input type="hidden" id="beneficiario" name="beneficiario" placeholder="Informe o nome do beneficiario" size="30" onclick="this.select();" maxlength="25" value="<?= isset($beneficiario_pix) ? $beneficiario_pix : "" ?>" required>
 
-                                    <input type="hidden" id="identificador" name="identificador" placeholder="Identificador do pagamento" value="***" size="25" onclick="this.select();" value="<?= isset($_POST["identificador"]) ? $_POST["identificador"] : "" ?>">
+                                <input type="hidden" name="cidade" placeholder="Informe a cidade" onclick="this.select();" maxlength="15" value="<?= isset($cidade_pix) ? $cidade_pix : "" ?>" required>
+
+                                <input type="hidden" id="identificador" name="identificador" placeholder="Identificador do pagamento" value="***" size="25" onclick="this.select();" value="<?= isset($_POST["identificador"]) ? $_POST["identificador"] : "" ?>">
                                 <p>
                                     <button type="submit" class="btn btn-primary mt-3">Gerar QR Code <i class="fas fa-qrcode"></i></button>&nbsp;
                                 </p>
@@ -145,9 +148,9 @@ if (is_numeric(isset($_POST["valor"]) ? $_POST["valor"] : "")) {
                                     $px[26][01] = $chave_pix;
                                     if (!empty($descricao)) {
                                         /* 
-      Não é possível que a chave pix e infoAdicionais cheguem simultaneamente a seus tamanhos máximos potenciais.
-      Conforme página 15 do Anexo I - Padrões para Iniciação do PIX  versão 1.2.006.
-      */
+                                    Não é possível que a chave pix e infoAdicionais cheguem simultaneamente a seus tamanhos máximos potenciais.
+                                    Conforme página 15 do Anexo I - Padrões para Iniciação do PIX  versão 1.2.006.
+                                    */
                                         $tam_max_descr = 99 - (4 + 4 + 4 + 14 + strlen($chave_pix));
                                         if (strlen($descricao) > $tam_max_descr) {
                                             $descricao = substr($descricao, 0, $tam_max_descr);
@@ -171,20 +174,20 @@ if (is_numeric(isset($_POST["valor"]) ? $_POST["valor"] : "")) {
                                     $pix .= crcChecksum($pix); //Calcula o checksum CRC16 e acrescenta ao final.
                                     $linhas = round(strlen($pix) / 120) + 1;
                                 ?>
-                                    
-                                        <h4>Linha do Pix (copia e cola):</h4>
-                                        
-                                            
-                                                <textarea class="text-monospace w-75" id="brcodepix" rows="<?= $linhas; ?>" cols="130" onclick="copiar()"><?= $pix; ?></textarea>
-                                            
-                                            <div class="col md-1">
-                                                <p><button type="button" id="clip_btn" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Copiar código pix" onclick="copiar()"><i class="fas fa-clipboard"></i></button></p>
-                                            </div>
-                                        
-                                   
+
+                                    <h4>Linha do Pix (copia e cola):</h4>
+
+
+                                    <textarea class="text-monospace w-75" id="brcodepix" rows="<?= $linhas; ?>" cols="130" onclick="copiar()"><?= $pix; ?></textarea>
+
+                                    <div class="col md-1">
+                                        <p><button type="button" id="clip_btn" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Copiar código pix" onclick="copiar()"><i class="fas fa-clipboard"></i></button></p>
+                                    </div>
+
+
                                     <h4>Imagem de QRCode do Pix:</h4>
-                            
-                                    <?php
+
+                                <?php
                                     ob_start();
                                     QRCode::png($pix, null, 'M', 5);
                                     $imageString = base64_encode(ob_get_contents());
@@ -192,18 +195,41 @@ if (is_numeric(isset($_POST["valor"]) ? $_POST["valor"] : "")) {
                                     // Exibe a imagem diretamente no navegador codificada em base64.
                                     echo '<img src="data:image/png;base64,' . $imageString . '"></p>';
                                 }
-                                    ?>
+                                ?>
 
 
                             </form>
-                            </p>
+                            <?php if (isset($imageString)) {
+                            ?>
+                                <form method="post" id="RealizaDoacao" action="<?= base_url() ?>gerirdoacao/grava_doacao">
+
+                                    <input type="hidden" id="valor" name="valor" placeholder="Informe o valor" class="form-group" size="15" maxlength="13" value="<?= isset($valor_pix) ? $valor_pix : "" ?>" onclick="this.select();" onkeypress="mascara(this,reais)">
+
+                                    <input type="hidden" id="entidade" name="entidade" value="<?= isset($entidade["nome"]) ? $entidade["nome"] : "" ?>">
+
+                                    <input type="hidden" id="descricao" class="form-label" name="descricao" placeholder="Descricao do pagamento" size="60" maxlength="70" value="<?= isset($_POST["descricao"]) ? $_POST["descricao"] : "" ?>" onclick="this.select();">
+
+                                    <input type="hidden" id="chave" name="chave" placeholder="Informe a chave pix" value="+5532988396781" size="50" maxlength="100" onclick="this.select();" data-toggle="tooltip" data-placement="right" title="Informe a chave pix de destino" required>
+
+                                    <input type="hidden" id="beneficiario" name="beneficiario" placeholder="Informe o nome do beneficiario" size="30" onclick="this.select();" maxlength="25" value="<?= isset($beneficiario_pix) ? $beneficiario_pix : "" ?>" required>
+
+                                    <input type="hidden" name="cidade" placeholder="Informe a cidade" onclick="this.select();" maxlength="15" value="<?= isset($cidade_pix) ? $cidade_pix : "" ?>" required>
+
+                                    <input type="hidden" id="identificador" name="identificador" placeholder="Identificador do pagamento" value="***" size="25" onclick="this.select();" value="<?= isset($_POST["identificador"]) ? $_POST["identificador"] : "" ?>">
+                                    <p>
+                                        <!-- <button type="submit" class="btn btn-primary mt-3">Confirmar pagamento <i class="fas fa-qrcode"></i></button>&nbsp; -->
+                                        <input type="submit" class="btn btn-primary mt-3" value="Confirmar Pagamento">
+                                    </p>
+                                    </p>
+                            <?php
+                            } else {
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
     </main>
     </div>
@@ -212,3 +238,30 @@ if (is_numeric(isset($_POST["valor"]) ? $_POST["valor"] : "")) {
 </body>
 
 </html>
+
+<script>
+
+    document.getElementById("GeraQR").addEventListener("submit", GeraQR);
+
+    function GeraQR() {
+        alert("QR Code gerado! Após efetuar o pagamento, clique em 'Confirmar Pagamento'");
+        // Swal.fire({
+        //     icon: 'success',
+        //     title: 'Obrigado!',
+        //     text: 'Recebemos sua doação! Você pode acompanhar em "Minhas Doações!"',
+        //     footer: '<a href="">Minhas Doações?</a>'
+        // })
+    }
+
+    document.getElementById("RealizaDoacao").addEventListener("submit", RealizaDoacao);
+
+    function RealizaDoacao() {
+        alert("Recebemos sua confirmação! Você pode acompanhar em 'Minhas Doações'");
+        // Swal.fire({
+        //     icon: 'success',
+        //     title: 'Obrigado!',
+        //     text: 'Recebemos sua doação! Você pode acompanhar em "Minhas Doações!"',
+        //     footer: '<a href="">Minhas Doações?</a>'
+        // })
+    }
+</script>
