@@ -46,7 +46,7 @@
 
 <script>
     function goDelete(id) {
-        var myUrl = 'entidades/edit/' + id;
+        var myUrl = 'entidades/destroy/' + id;
         if (confirm("Deseja apagar este registro?")) {
             window.location.href = 'entidades/destroy/' + id;
         } else {

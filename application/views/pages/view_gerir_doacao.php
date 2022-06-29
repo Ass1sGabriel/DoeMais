@@ -22,17 +22,27 @@
 							<td><?= $doacao["id"] ?></td>
 							<td><?= $doacao["entidade"] ?></td>
 							<td>R$ <?= $doacao["valor"] ?></td>
-							<td><?= $doacao["status"] == 1 ? "Pendente" : "Aprovado" ?></td>
-							<td><?= date('d/m/Y',strtotime($doacao["data"])); ?></td>
-							<td><?= date('H:i:s',strtotime($doacao["data"])); ?></td>
+							<td>
+								<?php
+								if ($doacao["status"] == 1) {
+									echo "Pendente";
+								} else if ($doacao["status"] == 2) {
+									echo "Aprovado";
+								} else {
+									echo "Cancelado";
+								}
+								?>
+							</td>
+							<td><?= date('d/m/Y', strtotime($doacao["data"])); ?></td>
+							<td><?= date('H:i', strtotime($doacao["data"])); ?></td>
 							<td>
 								<?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
-									<a href="<?= base_url() ?>gerirdoacao/edit/<?= $doacao["id"] ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-									<a href="javascript:goDelete(<?= $doacao['id'] ?>)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+									<a href="javascript:goConfirma(<?= $doacao['id'] ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+									<a href="javascript:goCancela(<?= $doacao['id'] ?>)" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
 								<?php else : ?>
-									<button disabled type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-										<button disabled type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
-										<?php endif; ?>
+									<button disabled type="button" class="btn btn-warning btn-sm"><i class="fas fa-check"></i></a>
+									<button disabled type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i></a>
+								<?php endif; ?>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -41,12 +51,22 @@
 		</div>
 	</main>
 	<script>
-		function goDelete(id) {
-			var myUrl = 'gerirdoacao/edit/' + id;
-			if (confirm("Deseja apagar este registro?")) {
-				window.location.href = 'gerirdoacao/destroy/' + id;
+		function goConfirma(id) {
+			var myUrl = 'confirma/' + id;
+			if (confirm("Tem certeza que deseja confirmar essa doação?")) {
+				window.location.href = 'confirma/' + id;
 			} else {
-				alert("Registro não alterado");
+				alert("Doação não alterada");
+				return false;
+			}
+		}
+
+		function goCancela(id) {
+			var myUrl = 'cancela/' + id;
+			if (confirm("Tem certeza que deseja cancelar essa doação?")) {
+				window.location.href = 'cancela/' + id;
+			} else {
+				alert("Doação não alterada");
 				return false;
 			}
 		}
@@ -60,7 +80,7 @@
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
-					<th>#</th>
+						<th>#</th>
 						<th width="27%">Entidade</th>
 						<th width="27%">Valor</th>
 						<th width="14%">Status</th>
@@ -75,8 +95,8 @@
 							<td><?= $doacao["entidade"] ?></td>
 							<td>R$ <?= $doacao["valor"] ?></td>
 							<td><?= $doacao["status"] == 1 ? "Pendente" : "Aprovado" ?></td>
-							<td><?= date('d/m/Y',strtotime($doacao["data"])); ?></td>
-							<td><?= date('H:i:s',strtotime($doacao["data"])); ?></td>
+							<td><?= date('d/m/Y', strtotime($doacao["data"])); ?></td>
+							<td><?= date('H:i', strtotime($doacao["data"])); ?></td>
 						</tr>
 					<?php endforeach; ?>
 				</tbody>

@@ -50,6 +50,29 @@ class GerirDoacao extends CI_Controller
 		redirect("entidadesdoacao");
 	}
 
+	public function show($id)
+	{
+		return $this->db->get_where("entidades", array(
+			"id" => $id
+		))->row_array();
+	}
+
+	public function confirma($id)
+	{
+		$this->db->set('status', '2', false);
+		$this->db->where("id", $id);
+		$this->db->update("doacoes");
+		redirect("gerirdoacao/adm_index");
+	}
+
+	public function cancela($id)
+	{
+		$this->db->set('status', '3', false);
+		$this->db->where("id", $id);
+		$this->db->update("doacoes");
+		redirect("gerirdoacao/adm_index");
+	}
+
 	// public function doar($id)
 	// {
 	// 	$dados["entidade"]  = $this->entidades_doacao_model->show($id);
@@ -68,18 +91,4 @@ class GerirDoacao extends CI_Controller
 	// 	$this->entidades_doacao_model->update($id, $entidade);
 	// 	redirect("entidades");
 	// }
-
-	public function show($id)
-	{
-		return $this->db->get_where("entidades", array(
-			"id" => $id
-		))->row_array();
-	}
-
-	public function destroy($id)
-	{
-		$this->db->where("id", $id);
-		$this->db->delete("entidades");
-		redirect("entidades");
-	}
 }
