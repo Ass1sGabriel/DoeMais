@@ -11,7 +11,7 @@ class Entidades_doacao_model extends CI_model
 
 	public function dashboard_index()
 	{
-		$sql = "SELECT sum(valor) as valor FROM doacoes";
+		$sql = "SELECT sum(valor) as valor FROM doacoes WHERE status = 2";
 		$result = $this->db->query($sql);
 		return $result->row()->valor;
 	}
