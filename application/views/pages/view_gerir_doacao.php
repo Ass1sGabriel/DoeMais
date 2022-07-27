@@ -40,8 +40,8 @@
 									<a href="javascript:goConfirma(<?= $doacao['id'] ?>)" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
 									<a href="javascript:goCancela(<?= $doacao['id'] ?>)" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
 								<?php else : ?>
-									<button disabled type="button" class="btn btn-warning btn-sm"><i class="fas fa-check"></i></a>
-									<button disabled type="button" class="btn btn-danger btn-sm"><i class="fas fa-times"></i></a>
+									<button disabled type="button" class="btn btn-success btn-sm"><i class="fas fa-check"></i></a>
+									<button disabled type="button" class="btn btn-sm btn-danger"><i class="fas fa-times"></i></a>
 								<?php endif; ?>
 							</td>
 						</tr>
