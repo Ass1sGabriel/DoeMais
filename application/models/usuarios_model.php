@@ -7,6 +7,11 @@
 			return $this->db->get("usuarios")->result_array();
 		}
 
+		public function dashboard_index()
+		{
+			return $this->db->count_all_results("usuarios");
+		}
+
 		public function store($user)
 		{
 			$this->db->insert("usuarios", $user);
@@ -24,5 +29,5 @@
 			$this->db->where("id", $id);
 			return $this->db->update("usuarios", $user);
 		}
-		
+	
 	}

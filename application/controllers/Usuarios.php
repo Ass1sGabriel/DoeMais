@@ -24,6 +24,11 @@ class Usuarios extends CI_Controller
 		$this->load->view('templates/js', $dados);
 	}
 
+	public function dashboard_index()
+	{
+		return $this->db->count_all_results("usuarios");
+	}
+
 	public function edit($id)
 	{
 		$dados["usuario"]  = $this->usuarios_model->show($id);

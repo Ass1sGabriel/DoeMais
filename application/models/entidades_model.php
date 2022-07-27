@@ -9,9 +9,7 @@
 
 		public function dashboard_index()
 		{
-			$this->db->order_by("id", "DESC");
-			$this->db->limit(3);
-			return $this->db->get("entidades")->result_array();
+			return $this->db->count_all_results("entidades");
 		}
 
 		public function principal_index()

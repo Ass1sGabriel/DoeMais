@@ -1,85 +1,142 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="<?php echo base_url('public/assets/favicon.ico'); ?>" />
-  <!-- Bootstrap Icons-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-  <!-- SimpleLightbox plugin CSS-->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-  <!-- Core theme CSS (includes Bootstrap)-->
-  <link href="<?php echo base_url('public/css/style.css'); ?>" rel="stylesheet" />
-</head>
-
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="<?= base_url() ?>">DoeMais</a>
-  <div>
-    <form action="<?= base_url() ?>dashboard/pesquisar" method="post">
-      <!-- <input class="form-control form-control-dark" type="text" name="busca" id="busca" placeholder="Search" aria-label="Search" value=""> -->
-    </form>
-  </div>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="<?= base_url() ?>login/logout">Sair</a>
-    </li>
-  </ul>
-</nav>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Menu</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
+<div class="wrapper ">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+    <div class="logo">
+      <a href="https://www.creative-tim.com" class="simple-text logo-mini">
+        <div class="logo-image-small">
+          <img src="<?php echo base_url('public/assets/img/logo-small.png'); ?>">
+        </div>
+        <!-- <p>CT</p> -->
+      </a>
+      <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+        DoeMais
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="active ">
+          <a href="<?= base_url() ?>dashboard">
+            <i class="nc-icon nc-bank"></i>
+            <p>Dashboard</p>
           </a>
-        </h6>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>dashboard">
-              <span data-feather="shopping-cart"></span>
-              Dashboard
-            </a>
-            <a class="nav-link" href="<?= base_url() ?>entidadesdoacao">
-              <span data-feather="shopping-cart"></span>
-              Fazer Doação
-            </a>
-            <a class="nav-link" href="<?= base_url() ?>gerirdoacao/usuario_index">
-              <span data-feather="shopping-cart"></span>
-              Minhas Doações
-            </a>
-            <!-- Início dos itens acessíveis apenas por administradores -->
-            <?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
-              <a class="nav-link disabled">
-                <span data-feather="shopping-cart"></span>
-                Administradores
-              </a>
-              <a class="nav-link" href="<?= base_url() ?>usuarios">
-                <span data-feather="shopping-cart"></span>
-                Usuários
-              </a>
-              <a class="nav-link" href="<?= base_url() ?>entidades">
-                <span data-feather="shopping-cart"></span>
-                Entidades
-              </a>
-              <a class="nav-link" href="<?= base_url() ?>gerirdoacao/adm_index">
-                <span data-feather="shopping-cart"></span>
-                Doações
-              </a>
-              <!-- Fim dos itens acessíveis apenas por administradores -->
-              <!-- Início dos itens acessíveis apenas pelos demais usuários -->
-            <?php else : ?>
-
-            <?php endif; ?>
-            <!-- Fim dos itens acessíveis apenas pelos demais usuários -->
+        </li>
+        <!-- Início dos itens acessíveis apenas por administradores -->
+        <?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
+          <li class="text-center mt-2 mb-2">
+            <h6>Administradores</h6>
           </li>
-        </ul>
+          <li>
+            <a href="<?= base_url() ?>usuarios">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Usuários</p>
+            </a>
+          </li>
+          <li>
+            <a href="<?= base_url() ?>entidades">
+              <i class="nc-icon nc-bank"></i>
+              <p>Entidades</p>
+            </a>
+          </li>
+          <li>
+            <a href="<?= base_url() ?>gerirdoacao/adm_index">
+              <i class="nc-icon nc-bank"></i>
+              <p>Doações</p>
+            </a>
+          </li>
+          <li class="text-center mt-2 mb-2">
+            <h6>Usuários</h6>
+          </li>
+          <!-- <li class="active-pro">
+                        <a href="./upgrade.html">
+                            <i class="nc-icon nc-spaceship"></i>
+                            <p>Upgrade to PRO</p>
+                        </a>
+                    </li> -->
+          <!-- Fim dos itens acessíveis apenas por administradores -->
+
+        <?php endif; ?>
+
+        <!-- Início dos itens acessíveis apenas pelos demais usuários -->
+        <li>
+          <a href="<?= base_url() ?>entidadesdoacao">
+            <i class="nc-icon nc-bank"></i>
+            <p>Fazer Doação</p>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url() ?>gerirdoacao/usuario_index">
+            <i class="nc-icon nc-bank"></i>
+            <p>Minhas Doações</p>
+          </a>
+        </li>
+        <!-- Fim dos itens acessíveis apenas pelos demais usuários -->
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <div class="navbar-toggle">
+            <button type="button" class="navbar-toggler">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </button>
+          </div>
+          <a class="navbar-brand" href="javascript:;">Dashboard - Admin</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <form>
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Pesquisar...">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="nc-icon nc-zoom-split"></i>
+                </div>
+              </div>
+            </div>
+          </form>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link btn-magnify" href="javascript:;">
+                <i class="nc-icon nc-layout-11"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item btn-rotate dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="nc-icon nc-bell-55"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Some Actions</span>
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item btn-rotate dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="nc-icon nc-settings-gear-65"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Conta</span>
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink2">
+                <a class="dropdown-item" href="<?= base_url() ?>login/logout">Sair</a>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
+    <!-- End Navbar -->
