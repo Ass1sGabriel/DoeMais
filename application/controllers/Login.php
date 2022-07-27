@@ -12,8 +12,14 @@ class Login extends CI_Controller
 
 	public function index()
 	{
-		$dados["title"] = "DoeMais - Login";
-		$this->load->view('pages/view_login', $dados);
+		$ci = get_instance();
+		$loggedUser = $ci->session->userdata("logged_user");
+		if ($loggedUser) {
+			redirect('dashboard');
+		} else {
+			$dados["title"] = "DoeMais - Login";
+			$this->load->view('pages/view_login', $dados);
+		}
 	}
 
 	public function store()
