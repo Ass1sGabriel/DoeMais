@@ -7,7 +7,7 @@
         </div>
         <!-- <p>CT</p> -->
       </a>
-      <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+      <a href="<?= base_url(); ?>" class="simple-text logo-normal">
         DoeMais
       </a>
     </div>
