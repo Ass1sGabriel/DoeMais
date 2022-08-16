@@ -55,10 +55,36 @@ class Usuarios extends CI_Controller
 		))->row_array();
 	}
 
-	public function destroy($id)
+	// public function destroy($id)
+	// {
+	// 	$this->db->where("id", $id);
+	// 	$this->db->delete("usuarios");
+	// 	redirect("usuarios");
+	// }
+
+	public function altera_status_ativo($id)
 	{
+		$this->db->set('status', '1', false);
 		$this->db->where("id", $id);
-		$this->db->delete("usuarios");
+		$this->db->update("usuarios");
 		redirect("usuarios");
+
+		// $this->db->set('status', '3', false);
+		// $this->db->where("id", $id);
+		// $this->db->delete("entidades");
+		// redirect("entidades");
+	}
+
+	public function altera_status_inativo($id)
+	{
+		$this->db->set('status', '2', false);
+		$this->db->where("id", $id);
+		$this->db->update("usuarios");
+		redirect("usuarios");
+
+		// $this->db->set('status', '3', false);
+		// $this->db->where("id", $id);
+		// $this->db->delete("entidades");
+		// redirect("entidades");
 	}
 }

@@ -28,11 +28,11 @@
 										<td><?= $usuario["email"] ?></td>
 										<td><?= $usuario["cidade"] ?></td>
 										<td><?= $usuario["funcao"] ?></td>
-										<td><?= $usuario["status"] ?></td>
+										<td><?= $usuario["status"] == 1 ? "Ativo" : "Inativo" ?></td>
 										<td>
 											<?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
 												<a href="<?= base_url() ?>usuarios/edit/<?= $usuario["id"] ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-												<a href="javascript:goDelete(<?= $usuario['id'] ?>)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+												<a href="javascript:altera_status(<?= $usuario['id'] ?>)" class="btn btn-sm btn-danger"><i class="fa-solid fa-arrows-rotate"></i></a>
 											<?php else : ?>
 												<button disabled type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
 													<button disabled type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
@@ -54,15 +54,3 @@
 		</div>
 	</div>
 </div>
-
-<script>
-	function goDelete(id) {
-		var myUrl = 'usuarios/edit/' + id;
-		if (confirm("Deseja apagar este registro?")) {
-			window.location.href = 'usuarios/destroy/' + id;
-		} else {
-			alert("Registro não alterado");
-			return false;
-		}
-	}
-</script>

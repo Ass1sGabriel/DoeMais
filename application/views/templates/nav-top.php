@@ -107,7 +107,7 @@
               <a class="nav-link btn-magnify" href="javascript:;">
                 <i class="nc-icon nc-layout-11"></i>
                 <p>
-                  <span class="d-lg-none d-md-block">Stats</span>
+                  <span class="d-lg-none d-md-block">Status</span>
                 </p>
               </a>
             </li>
@@ -115,13 +115,13 @@
               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="nc-icon nc-bell-55"></i>
                 <p>
-                  <span class="d-lg-none d-md-block">Some Actions</span>
+                  <span class="d-lg-none d-md-block">Algumas Ações</span>
                 </p>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">Algo 1</a>
+                <a class="dropdown-item" href="#">Algo 2</a>
+                <a class="dropdown-item" href="#">Algo 3</a>
               </div>
             </li>
             <li class="nav-item btn-rotate dropdown">

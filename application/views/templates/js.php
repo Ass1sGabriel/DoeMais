@@ -4,6 +4,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="<?php echo base_url('public/assets/js/gerir_doacao.js'); ?>"></script>
-
+<script src="<?php echo base_url('public/assets/js/entidades.js'); ?>"></script>
+<script src="<?php echo base_url('public/assets/js/usuarios.js'); ?>"></script>
 </body>
 </html>

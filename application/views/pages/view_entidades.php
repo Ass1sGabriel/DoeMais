@@ -4,7 +4,7 @@
             <div class="card ">
                 <div class="card-header ">
                     <h5 class="card-title">Entidades</h5>
-                    <p class="card-category">Gerir entidades</p>
+                    <p class="card-category">Gerir entidades <a type="button" class="btn-sm btn-outline-info btn-sm ml-2" href="<?= base_url() ?>entidades/new">Nova <i class="fa-solid fa-plus"></i></a></p>
                 </div>
                 <div class="card-body ">
                     <div class="table">
@@ -28,11 +28,11 @@
                                         <td><?= $entidade["email"] ?></td>
                                         <td><?= $entidade["cidade"] ?></td>
                                         <td><?= $entidade["cnpj"] ?></td>
-                                        <td><?= $entidade["status"] ?></td>
+                                        <td><?= $entidade["status"] == 1 ? "Ativa" : "Inativa" ?></td>
                                         <td>
                                             <?php if ($_SESSION["logged_user"]["funcao"] === "Administrador") : ?>
                                                 <a href="<?= base_url() ?>entidades/edit/<?= $entidade["id"] ?>" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
-                                                <a href="javascript:goDelete(<?= $entidade['id'] ?>)" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                                <a href="javascript:altera_status(<?= $entidade['id'] ?>)" class="btn btn-sm btn-danger"><i class="fa-solid fa-arrows-rotate"></i></a>
                                             <?php else : ?>
                                                 <button disabled type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></a>
                                                     <button disabled type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></a>
@@ -56,13 +56,22 @@
 </div>
 
 <script>
-    function goDelete(id) {
-        var myUrl = 'entidades/destroy/' + id;
-        if (confirm("Deseja apagar este registro?")) {
-            window.location.href = 'entidades/destroy/' + id;
-        } else {
-            alert("Registro não alterado");
-            return false;
-        }
-    }
+    // $.ajax({
+	// 		url: "Sessao/get_filmes_sessao",
+	// 		data: {
+	// 			data: data,
+	// 			cinema: cinema,
+	// 			filme: $("#filme-id").val(),
+	// 		},
+	// 		noLoad: true,
+	// 		type: "POST",
+	// 		success: function (response) {
+	// 			$("div.sessions").children().not("div#session-spin").remove();
+	// 			$(response).insertBefore("div#session-spin");
+
+	// 			$("div#session-spin").hide();
+
+	// 			$('[data-toggle="tooltip"]').tooltip();
+	// 		},
+	// 	});
 </script>

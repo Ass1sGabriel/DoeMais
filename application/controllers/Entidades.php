@@ -37,7 +37,6 @@ class Entidades extends CI_Controller
 
 	public function store()
 	{
-
 		$this->load->model("entidades_model");
 		$entidade = array(
 			"nome" => $_POST["nome"],
@@ -78,10 +77,19 @@ class Entidades extends CI_Controller
 		))->row_array();
 	}
 
-	public function destroy($id)
+	public function altera_status_ativo($id)
 	{
+		$this->db->set('status', '1', false);
 		$this->db->where("id", $id);
-		$this->db->delete("entidades");
+		$this->db->update("entidades");
+		redirect("entidades");
+	}
+
+	public function altera_status_inativo($id)
+	{
+		$this->db->set('status', '2', false);
+		$this->db->where("id", $id);
+		$this->db->update("entidades");
 		redirect("entidades");
 	}
 }
