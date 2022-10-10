@@ -28,43 +28,16 @@ CREATE TABLE `doacoes` (
   `idUsuarioDoador` int(11) NOT NULL,
   `data` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `doacoes` */
 
 insert  into `doacoes`(`id`,`entidade`,`valor`,`status`,`idUsuarioDoador`,`data`) values 
-(1,'Faculdade UFKI',1.32,'1',0,NULL),
-(2,'Faculdade UFKI',0.23,'1',0,NULL),
-(3,'Faculdade UFKI',13.24,'1',0,NULL),
-(4,'Faculdade UFKI',134.24,'1',0,NULL),
-(5,'Faculdade UFKI',18.99,'1',0,NULL),
-(6,'Faculdade UFKI',0.08,'1',0,NULL),
-(7,'Faculdade UFKI',0,'1',0,NULL),
-(8,'Faculdade UFKI',0,'1',0,NULL),
-(9,'Faculdade UFKI',0,'1',0,NULL),
-(10,'Faculdade UFKI',0,'1',0,NULL),
-(11,'Faculdade UFKI',0,'1',0,NULL),
-(12,'Faculdade UFKI',0,'1',0,NULL),
-(13,'Faculdade UFKI',0,'1',0,NULL),
-(14,'Hospital São Paulo',0,'1',0,NULL),
-(15,'Hospital São Paulo',0,'1',0,NULL),
-(16,'Hospital São Paulo',0,'1',0,NULL),
-(17,'Casa das Meninas',0,'1',0,NULL),
-(18,'Faculdade UFKI',0,'1',0,NULL),
-(19,'Faculdade UFKI',0,'1',0,NULL),
-(20,'Faculdade UFKI',0,'1',0,NULL),
-(21,'Faculdade UFKI',0,'1',0,NULL),
-(22,'Hospital São Paulo',0,'1',1,NULL),
-(23,'Casa das Meninas',0,'1',1,NULL),
-(24,'Faculdade UFKI',40,'1',1,'2022-06-20 20:36:53'),
-(25,'Faculdade UFKI',0,'1',1,'2022-06-20 20:39:37'),
-(26,'Faculdade UFKI',0,'1',1,'2022-06-20 17:41:02'),
-(27,'Faculdade UFKI',0,'1',1,'0000-00-00 00:00:00'),
-(28,'Faculdade UFKI',0,'1',1,'2022-06-20 17:42:05'),
-(29,'Faculdade UFKI',150,'1',1,'2022-06-20 18:29:10'),
-(30,'Faculdade UFKI',0.07,'1',2,'2022-06-20 18:30:40'),
-(31,'Faculdade UFKI',100,'1',2,'2022-06-28 21:34:05'),
-(32,'Faculdade UFKI',0.01,'1',2,'2022-06-28 21:34:19');
+(1,'Faculdade UFKI',2,'2',1,'2022-07-27 16:58:42'),
+(2,'Faculdade UFKI',3,'2',1,'2022-07-27 17:16:31'),
+(3,'Faculdade UFKI',2.31,'2',1,'2022-07-29 11:39:14'),
+(4,'Casa das Meninas',9.1,'2',1,'2022-09-19 19:17:43'),
+(5,'Casa das Meninas',20,'2',1,'2022-09-19 19:53:07');
 
 /*Table structure for table `entidades` */
 
@@ -85,11 +58,10 @@ CREATE TABLE `entidades` (
 /*Data for the table `entidades` */
 
 insert  into `entidades`(`id`,`nome`,`email`,`cidade`,`descricao`,`cnpj`,`status`,`user_id`) values 
-(1,'Hospital São Paulo','hsp@email.com','Muriaé','O Hospital São Paulo, localizado em Muriaé atende pelo SUS e particular','ISENTO','Ativo',NULL),
+(1,'Hospital São Paulo','hsp@email.com','Muriaé','O Hospital São Paulo, localizado em Muriaé atende pelo SUS e particular','ISENTO','1',NULL),
 (2,'Casa das Meninas','casa@email.com','Muriaé','A Casa das meninas funciona como um lar que recebe meninas em situações desfavoráveis','22222222222222','Ativo',NULL),
-(3,'Igreja','igreja@email.com','Muriae','312d','22222222222222','Inativo',NULL),
+(3,'Igreja','igreja@email.com','Muriae','312d','22222222222222','2',NULL),
 (4,'Faculdade UFKI','faculdade@email.com','Itaperuna','A UFKI busca alunos com baixa renda ou em situações desfavoráveis, buscando uma melhora de vida!','83292112312321','Ativo',NULL),
-(5,'Pudim','pudim@email.com','Muriaé','Lalalalala','39128932191212','Inativo',NULL),
 (9,'Casa dos Meninos','final@email.com','São Paulo','A Casa dos meninos funciona como um lar que recebe meninos em situações desfavoráveis','ISENTO','Ativo',NULL);
 
 /*Table structure for table `usuarios` */
@@ -110,8 +82,8 @@ CREATE TABLE `usuarios` (
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id`,`nome`,`email`,`senha`,`cidade`,`funcao`,`status`) values 
-(1,'Gabriel Assis','gabriel@email.com','202cb962ac59075b964b07152d234b70','Muriaé','Administrador','Ativo'),
-(2,'Jhonata','jhonata@email.com','202cb962ac59075b964b07152d234b70','Itaperuna','Usuario','Ativo');
+(1,'Gabriel Assis','gabriel@email.com','202cb962ac59075b964b07152d234b70','Muriaé','Administrador','1'),
+(2,'Jhonata','jhonata@email.com','202cb962ac59075b964b07152d234b70','Itaperuna','Usuario','1');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
