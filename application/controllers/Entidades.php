@@ -30,7 +30,7 @@ class Entidades extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/form-entidades', $dados);
+		$this->load->view('pages/admin/view_form_entidades', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}
@@ -58,7 +58,7 @@ class Entidades extends CI_Controller
 
 		$this->load->view('templates/header', $dados);
 		$this->load->view('templates/nav-top', $dados);
-		$this->load->view('pages/form-entidades', $dados);
+		$this->load->view('pages/admin/view_form_entidades', $dados);
 		$this->load->view('templates/footer', $dados);
 		$this->load->view('templates/js', $dados);
 	}

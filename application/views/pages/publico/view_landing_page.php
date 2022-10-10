@@ -132,6 +132,7 @@
     <section class="page-section" id="parceiros">
         <div class="container px-4 px-lg-5">
             <h2 class="text-center mt-0">Entidades Parceiras</h2>
+            <p class="text-center mt-0"><small class="text-secondary">**Algumas Entidades parceiras, para ver o total acesse "Ver Mais"</small></p>
             <hr class="divider" />
             <div class="row gx-4 gx-lg-5">
                 <?php foreach ($entidades as $entidade) : ?>
@@ -145,6 +146,7 @@
                 <?php endforeach; ?>
             </div>
         </div>
+        <a type="button" href="view_pagina_doacoes" class="btn btn-primary btn-md">Ver Mais</a>
     </section>
     <!-- Contato -->
     <section class="page-section bg-primary" id="contato">

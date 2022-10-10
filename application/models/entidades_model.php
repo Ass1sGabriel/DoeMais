@@ -16,7 +16,7 @@
 		{
 			$this->db->where("status", "ativo");
 			$this->db->order_by("nome", "ASC");
-			return $this->db->get("entidades")->result_array();
+			return $this->db->get("entidades", 4)->result_array();
 		}
 
 		public function store($user)
